@@ -151,21 +151,45 @@ function appendToTranscript(role, text, modelKey = null) {
     // Show full text in transcript
     const parsedText = marked.parseInline(text);
 
+    // Create copy button HTML
+    const copyBtnHtml = `<button class="msg-copy-btn" onclick="copyTranscriptMsg(this, \`${text.replace(/`/g, '\\`').replace(/"/g, '&quot;')}\`)" title="Copy message"><i class="fa-regular fa-copy"></i></button>`;
+
     if (role === 'system') {
         html = `<div class="transcript-msg system">${text}</div>`;
     } else if (role === 'user') {
-        html = `<div class="transcript-msg user"><strong>You</strong> ${text}</div>`;
+        html = `<div class="transcript-msg user" onclick="this.classList.toggle('expanded')">${copyBtnHtml}<strong>You</strong> ${text}</div>`;
     } else if (role === 'consensus') {
-        html = `<div class="transcript-msg consensus"><strong>⚖ Consensus</strong><br>${parsedText}</div>`;
+        html = `<div class="transcript-msg consensus" onclick="this.classList.toggle('expanded')">${copyBtnHtml}<strong>⚖ Consensus</strong><br>${parsedText}</div>`;
     } else {
         const aiName = AI_MODELS[modelKey].name;
-        html = `<div class="transcript-msg ${modelKey}"><strong>${aiName}</strong> ${parsedText}</div>`;
+        html = `<div class="transcript-msg ${modelKey}" onclick="this.classList.toggle('expanded')">${copyBtnHtml}<strong>${aiName}</strong> ${parsedText}</div>`;
     }
 
     elements.transcriptContainer.insertAdjacentHTML('beforeend', html);
     elements.transcriptContainer.scrollTo({
         top: elements.transcriptContainer.scrollHeight,
         behavior: 'smooth'
+    });
+}
+
+// Function to handle copying specific transcript messages
+function copyTranscriptMsg(btnElement, textToCopy) {
+    // Prevent the click from triggering the expand/collapse on the parent div
+    event.stopPropagation();
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        const icon = btnElement.querySelector('i');
+        const originalClass = icon.className;
+
+        btnElement.classList.add('copied');
+        icon.className = 'fa-solid fa-check';
+
+        setTimeout(() => {
+            btnElement.classList.remove('copied');
+            icon.className = originalClass;
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
     });
 }
 
