@@ -527,25 +527,39 @@ body {
 }
 
 .avatar.chatgpt {
-    background: linear-gradient(135deg, #10a37f, #0d8a6b);
-    color: white;
+    background-image: url('chatgpt.png');
+    background-size: auto 75%;
+    background-position: left 4px center;
+    background-repeat: no-repeat;
+    background-color: transparent !important;
+    color: transparent;
 }
 
 .avatar.claude {
-    background: #EBD9CE;
-    /* Anthropic Peach */
-    color: #1a1a1a;
+    background-image: url('claude.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent !important;
+    color: transparent;
 }
 
 .avatar.gemini {
-    background: #ffffff;
-    color: #1a1a1a;
-    /* Base color, gradient applied via SVG */
+    background-image: url('gemini.svg');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: white !important;
+    color: transparent;
 }
 
 .avatar.grok {
-    background: linear-gradient(135deg, #333, #000);
-    color: white;
+    background-image: url('grok.png');
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black !important;
+    color: transparent;
 }
 
 .ai-badge {
