@@ -531,11 +531,11 @@ body {
 }
 
 .avatar.claude {
-    background-color: #EBD9CE !important;
+    background-color: #191919 !important;
 }
 
 .avatar.gemini {
-    background-color: white !important;
+    background: linear-gradient(135deg, #1a73e8, #8ab4f8) !important;
 }
 
 .avatar.grok {
