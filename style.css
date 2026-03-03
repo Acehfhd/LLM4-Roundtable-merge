@@ -512,13 +512,13 @@ body {
 }
 
 .ai-seat.speaking .avatar.claude {
-    border-color: var(--color-claude);
-    box-shadow: 0 0 30px rgba(217, 119, 87, 0.5);
+    border-color: #EBD9CE;
+    box-shadow: 0 0 30px rgba(235, 217, 206, 0.3);
 }
 
 .ai-seat.speaking .avatar.gemini {
-    border-color: var(--color-gemini);
-    box-shadow: 0 0 30px rgba(26, 115, 232, 0.5);
+    border-color: #ffffff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
 
 .ai-seat.speaking .avatar.grok {
@@ -532,13 +532,15 @@ body {
 }
 
 .avatar.claude {
-    background: linear-gradient(135deg, #d97757, #c16345);
-    color: white;
+    background: #EBD9CE;
+    /* Anthropic Peach */
+    color: #1a1a1a;
 }
 
 .avatar.gemini {
-    background: linear-gradient(135deg, #1a73e8, #8ab4f8);
-    color: white;
+    background: #ffffff;
+    color: #1a1a1a;
+    /* Base color, gradient applied via SVG */
 }
 
 .avatar.grok {
